@@ -3,7 +3,7 @@
 # filestoread <- list.files("C:/dados/coursera/Coursera_DS/specdata",full.names = TRUE)
 #"sulfate","nitrate","ID"
 
-complete_station_data <- function(directory, id = 1:332){
+complete <- function(directory, id = 1:332){
         filestoread <- list.files(directory,full.names = TRUE)
         validstations <- vector()
         validmeasurements <- vector()
@@ -17,8 +17,7 @@ complete_station_data <- function(directory, id = 1:332){
                 validmeasurements <- c(validmeasurements,nobs)
         }
         
-        stationsmeasurements <- cbind(validstations, validmeasurements)
-        stationsmeasurements <- as.data.frame(stationsmeasurements)
+        stationsmeasurements <-  as.data.frame(cbind(validstations, validmeasurements))
         colnames(stationsmeasurements) <- c("id","nobs")
         stationsmeasurements
 }

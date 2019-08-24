@@ -11,18 +11,35 @@
 
 
 corr <- function(directory, threshold =0 ){
-        filestoread <- list.files(directory,full.names = TRUE)
-        numfiles <- 1:length(filestoread)
-        nitrates <- vector()
-        sulfates <- vector()
-
-        for (files in numfiles) {
-                measurement <- read.csv(filestoread[files])
-                usefulldata <- complete.cases(measurement)
-                pollutdatavalid <- measurement[usefulldata, ]
-                nitrates <- c(nitrates, pollutdatavalid$nitrate)
-                sulfates <- c(sulfates, pollutdatavalid$sulfate)
+        cr <- as.numeric(vector()) 
+        
+        # selecionando quais serão as estações lidas
+        
+        Complete_stations <- complete_station_data(directory)
+        set.selectedstations <- Complete_stations$nobs > threshold
+        selectedstations <- Complete_stations [set.selectedstations, ]
+        set.filestoread <- selectedstations$id
+        
+        if(any(set.selectedstations)){
+                # selecionando os aquivos que serão consultados
+                
+                allfiles <- list.files(directory,full.names = TRUE)
+                filestoread <- allfiles[set.filestoread]
+                
+                # calculando a correlacao em cada dataset selecionado
+                
+                for (i in 1:length(filestoread)){
+                        station.data <- read.csv(filestoread[i])
+                        valid.station.data <- complete.cases(station.data)
+                        complete.station.data <- as.data.frame(station.data[valid.station.data,])
+                        X <- complete.station.data$nitrate
+                        Y <- complete.station.data$sulfate
+                        cr[i] <- cor(X,Y)
+                }
+                cr           # Vetor de correlações que é retornado em caso de haver estações que atendam ao limite
+                
         }
-        pairofdata <- cbind(sulfates, nitrates)
-        pairofdata
+        cr  #vetor de correlações vazio
+        
 }
+
