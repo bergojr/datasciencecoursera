@@ -63,3 +63,6 @@ summary(cr)
 length(cr)
 ## [1] 323
 
+
+cc <- complete_station_data("specdata", c(6, 10, 20, 34, 100, 200, 310))
+print(cc$nobs)
