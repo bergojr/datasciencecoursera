@@ -36,6 +36,6 @@ best <- function(state, outcome){
   hospital.outcome.validos <- complete.cases(hospital.outcome)
   dados.filtrados<- hospital.outcome[hospital.outcome.validos, c("Hospital", outcome)]
   dados.filtrados.ordenados <- dados.filtrados[order(dados.filtrados[outcome],dados.filtrados["Hospital"]),]
-  dados.filtrados.ordenados[1,"Hospital"]
-  
+  dados.filtrados.ordenados[1,"Hospital"]  # Saída correta
+  #dados.filtrados.ordenados #saida para teste
 }
