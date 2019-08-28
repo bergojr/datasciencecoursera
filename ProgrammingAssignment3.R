@@ -32,17 +32,12 @@ best <- function(state, outcome){
     break
   }
   
-  dados.estado.selecionado2 <- dados.estado.selecionado[order(outcome),]
-  print(dados.estado.selecionado2)
-  dados.estado.selecionado2
-  
-  #hospital.ordenado <- dados.estado.selecionado[order(dados.estado.selecionado$Hospital, dados.estado.selecionado[outcome])]
-  #hospital.ordenado
-  ##problema.selecionado.estado <- dados.estado.selecionado[outcome]
-  ##problema.selecionado.estado
-  ## Return hospital name in that state with lowest 30-day death
-  ## rate
-  
-  #hospital.problema <- c(dados.estado.selecionado$Hospital , problema.selecionado.estado)
-  #hospital.problema
+
+  hospital.outcome <- dados.estado.selecionado[,names(dados.estado.selecionado) %in% c("Hospital", outcome)]
+  hospital.outcome.validos <- complete.cases(hospital.outcome)
+  dados.filtrados<- hospital.outcome[hospital.outcome.validos, c("Hospital", outcome)]
+  dados.filtrados.ordenados <- dados.filtrados[order(dados.filtrados[outcome],dados.filtrados["Hospital"]),]
+  dados.filtrados.ordenados[1,"Hospital"]  # Saída correta
+  #dados.filtrados.ordenados #saida para teste
+
 }
