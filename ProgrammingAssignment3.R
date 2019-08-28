@@ -19,7 +19,7 @@ best <- function(state, outcome){
   estado.selecionado <- dados$State == state
   
   dados.estado.selecionado <- dados[estado.selecionado,]
-  
+  print(dados.estado.selecionado)
   if (!any(estado.selecionado)){
     print("Estado selecionado não existe na base de dados!!!")
     break
@@ -33,6 +33,7 @@ best <- function(state, outcome){
   }
   
   dados.estado.selecionado2 <- dados.estado.selecionado[order(outcome),]
+  print(dados.estado.selecionado2)
   dados.estado.selecionado2
   
   #hospital.ordenado <- dados.estado.selecionado[order(dados.estado.selecionado$Hospital, dados.estado.selecionado[outcome])]
