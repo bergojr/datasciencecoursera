@@ -17,7 +17,7 @@ myapp <- oauth_app("github",
 # 3. Get OAuth credentials
 github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
 
-#1318861e67ee73f26f14&state=1CAp14lcr8
+
 
 # 4. Use API
 gtoken <- config(token = github_token)
