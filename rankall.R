@@ -28,6 +28,7 @@ rankall <- function(outcome, num = "best") {
   
   for (estado in dados.por.estado){
     estado.ordenado <- estado[order(estado[outcome],estado["Hospital"]),]
+    estado.ordenado.inv <- estado[order(estado[outcome],(estado["Hospital"]),decreasing = TRUE),]
     numlinhas <- nrow(estado)
     print(numlinhas)
     if(num == "best"){
@@ -35,6 +36,7 @@ rankall <- function(outcome, num = "best") {
       resultado <- rbind(resultado, melhor)
     } else if( num == "worst"){
       pior <- estado.ordenado[numlinhas,c("Hospital","State")]
+      print(pior)
       resultado <- rbind(resultado, pior)
     }else{
       selecao <- estado.ordenado[num,c("Hospital","State")]
