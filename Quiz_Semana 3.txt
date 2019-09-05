@@ -19,7 +19,7 @@ What are the first 3 values that result?
 59, 460, 474
 
 
-125, 238,262
+125, 238,262  (seleção)
 
 
 25, 36, 45
@@ -46,7 +46,7 @@ Use the parameter native=TRUE. What are the 30th and 80th quantiles of the resul
 -16776430 -15390165
 
 
--15259150 -10575416
+-15259150 -10575416 (Resultado)
 
 1 ponto
 
@@ -68,7 +68,7 @@ http://data.worldbank.org/data-catalog/GDP-ranking-table
 http://data.worldbank.org/data-catalog/ed-stats
 
 
-189 matches, 13th country is St. Kitts and Nevis
+189 matches, 13th country is St. Kitts and Nevis -> resposta
 
 
 189 matches, 13th country is Spain
@@ -103,7 +103,7 @@ What is the average GDP ranking for the "High income: OECD" and "High income: no
 23, 30
 
 
-32.96667, 91.91304
+32.96667, 91.91304 -> resposta
 
 
 23.966667, 30.91304
@@ -122,7 +122,7 @@ are Lower middle income but among the 38 nations with highest GDP?
 0
 
 
-5
+5   -> resposta
 
 
 12
